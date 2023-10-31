@@ -1,0 +1,20 @@
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{message}}
+        </div>
+    {% endfor %}
+{% endif %}
+<h1>Página principal</h1>
+<h2>Cadastrar:</h2>
+<form action="{% url 'create' %}" method="POST">
+    {% csrf_token %}
+    <input type="text" name="nome">
+    <button type="submit">Enviar</button>
+</form>
+
+
+<h2>Listar Imóveis</h2>
+{% for imovel in imovel %}
+    <div>Imóvel: {{imovel.nome}}  <a href="{% url 'edit' aluno.id %}">Editar</a><a href="{% url 'delete' aluno.id %}">Deletar</a></div>
+{% endfor %}
